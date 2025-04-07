@@ -1,6 +1,6 @@
 ### Q. **Comparing the Performance of Basic vs. Denoising Autoencoders in Reconstructing Images**
 
-#### Basic Autoencoder:
+#### Basic Autoencoder:-
 - **Purpose**: A basic autoencoder is trained to learn an efficient representation of the input data by encoding it into a lower-dimensional latent space and then decoding it back to the original input. The model learns to minimize the reconstruction error between the original input and the reconstructed output.
 - **Performance**: 
   - The reconstructed image is a direct representation of the input data. If the input data is clean and uncorrupted, the basic autoencoder performs well in reconstructing the images.
