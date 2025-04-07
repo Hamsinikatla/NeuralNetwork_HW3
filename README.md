@@ -1,37 +1,84 @@
 # NeuralNetwork_HW3
 
 # Q1.Implementing a Basic Autoencoder
-# MNIST Autoencoder
 
-This project demonstrates a simple autoencoder using TensorFlow and Keras to reconstruct MNIST handwritten digit images.
+Overview
 
-## Installation
+This project implements a basic Autoencoder model for image compression and reconstruction using the MNIST dataset. The Autoencoder is trained to map input images to a lower-dimensional latent space and then reconstruct the images from this compressed representation. The experiment explores how different latent space dimensions affect the quality of the reconstructed images.
 
-pip install numpy matplotlib tensorflow
+## Installation Instructions
 
-## Usage
+To run this project, make sure you have Python 3.x installed along with the necessary libraries:
 
-Run the script to:
-- Load and preprocess the MNIST dataset
-- Train a basic autoencoder (784 → 32 → 784)
-- Visualize original vs reconstructed images
+- TensorFlow (for building and training the Autoencoder model)
+- NumPy (for numerical operations)
+- Matplotlib (for visualizing results)
 
-## Code Overview
+You can install the required libraries using `pip`:
 
-- **Data**: MNIST (flattened 28x28 images)
-- **Model**: Fully connected autoencoder with one hidden (latent) layer
-- **Loss**: Binary crossentropy
-- **Optimizer**: Adam
+pip install tensorflow numpy matplotlib
 
-##  Output
 
-Displays a grid of original and reconstructed images using matplotlib.
+## Usage Guide
 
-##  Features & Learnings
+1. **Load the Script**: Copy the provided code into a Python file (e.g., `autoencoder_mnist.py`).
+2. **Run the Script**: Ensure you have the necessary libraries installed and run the script.
+3. **Training and Visualization**: The script will train the Autoencoder for each specified latent dimension and display the original and reconstructed images for comparison.
 
-- Dimensionality reduction with a latent space
-- Unsupervised learning approach
-- Visual comparison of input and output
+Example command:
+
+python autoencoder_mnist.py
+
+
+## Code Explanation
+
+1. **Data Preprocessing**:
+   - The MNIST dataset is loaded using TensorFlow's `mnist.load_data()` function.
+   - The data is normalized by dividing by 255 to scale the pixel values between 0 and 1.
+   - The images are reshaped from 28x28 to 784-dimensional vectors to be input to the fully connected layers of the Autoencoder.
+
+2. **Autoencoder Model**:
+   - The Autoencoder is a simple neural network with an encoder and decoder.
+     - **Encoder**: The input image is mapped to a lower-dimensional latent space using a dense layer.
+     - **Decoder**: The latent representation is then expanded back to the original input size using another dense layer.
+   - The model is trained with the Adam optimizer and binary cross-entropy loss to minimize the reconstruction error.
+
+3. **Training and Experimentation**:
+   - The `run_experiment()` function trains the Autoencoder for various latent dimensions (16, 32, and 64 in this case).
+   - The model is trained for 10 epochs, and the reconstructed images are compared to the original test images.
+   - The original and reconstructed images are visualized using Matplotlib.
+
+4. **Latent Space Exploration**:
+   - The latent space dimensions are varied to observe how the size of the latent space affects the quality of the reconstructed images.
+   - Lower latent dimensions result in more compressed representations, which may lead to poorer reconstructions, while higher latent dimensions preserve more details.
+
+## Output
+
+After running the script, you will see a series of plots, each showing the original and reconstructed images for different latent space sizes. Here is an example of the output for a latent dimension of 16,32,64.
+
+
+A plot will display the original MNIST images at the top row and their reconstructed counterparts at the bottom row. The reconstruction quality will vary depending on the latent dimension used.
+
+## Summary of Outputs
+
+- **Latent Dimension Comparison**: The reconstructed images will be displayed for each latent dimension (16, 32, 64).
+  - Smaller latent dimensions (e.g., 16) will lead to more blurry or less accurate reconstructions, as the model compresses the image more.
+  - Larger latent dimensions (e.g., 64) will result in clearer reconstructions, as the model has more capacity to capture the features of the images.
+- **Visualization**: For each latent dimension, a set of 10 original and reconstructed images will be shown.
+
+## Key Learnings
+
+- **Autoencoder Architecture**: An Autoencoder is a type of neural network that learns to compress and reconstruct data. It consists of an encoder (compressing data into a latent space) and a decoder (reconstructing data from the latent space).
+- **Latent Space Dimensions**: The latent dimension controls the level of compression. Smaller latent dimensions may lose critical information, resulting in poorer reconstructions. Larger latent dimensions preserve more information but are less compressed.
+- **Reconstruction Quality**: The quality of the reconstructed images depends on the size of the latent space. More complex representations (larger latent dimensions) typically lead to better reconstructions.
+
+## Features
+
+- **Image Compression**: The Autoencoder model reduces the input image's dimensionality and reconstructs it.
+- **Experiment with Latent Dimensions**: The experiment runs with various latent dimensions (16, 32, 64) to show how compression level affects reconstruction.
+- **Visualization**: The original and reconstructed images are visualized side by side to compare the quality of the reconstructions.
+- **Model Training**: The Autoencoder model is trained for 10 epochs and evaluated on the MNIST test set.
+
 
 
 
